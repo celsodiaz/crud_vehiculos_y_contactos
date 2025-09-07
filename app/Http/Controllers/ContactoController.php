@@ -7,7 +7,9 @@ use App\Models\Contacto;
 use App\Http\Requests\StoreContactoRequest;
 use App\Http\Requests\UpdateContactoRequest;
 use App\Http\Resources\ContactoCollection;
+use App\Http\Resources\ContactoResource;
 use Illuminate\Http\Request;
+use PDO;
 
 class ContactoController extends Controller
 {
@@ -66,7 +68,11 @@ class ContactoController extends Controller
      */
     public function show(Contacto $contacto)
     {
-        //
+        $includeVehiculos = request()->query('includeVehiculos');
+        if($includeVehiculos){
+            return new ContactoResource($contacto->loadMissing('vehiculos'));
+        }
+        return new ContactoResource($contacto);
     }
 
     /**
