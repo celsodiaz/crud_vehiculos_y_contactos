@@ -75,7 +75,7 @@ class VehiculoController extends Controller
      */
     public function show(Vehiculo $vehiculo)
     {
-        //
+        return new VehiculoResource($vehiculo);
     }
 
     /**
@@ -91,8 +91,13 @@ class VehiculoController extends Controller
      */
     public function update(UpdateVehiculoRequest $request, Vehiculo $vehiculo)
     {
-        
+         $vehiculo->update($request->validated());
+        return response()->json([
+            'message' => 'Contacto actualizado correctamente',
+            'data' => $vehiculo
+        ], 200);
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -88,10 +88,15 @@ class ContactoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContactoRequest $request, Contacto $contacto)
+   public function update(UpdateContactoRequest $request, Contacto $contacto)
     {
-    
+        $contacto->update($request->validated());
+        return response()->json([
+            'message' => 'Contacto actualizado correctamente',
+            'data' => $contacto
+        ], 200);
     }
+
 
     /**
      * Remove the specified resource from storage.
