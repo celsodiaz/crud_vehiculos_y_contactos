@@ -314,28 +314,63 @@ GET /api/vehiculos?clienteDocumento[eq]=12345678
 - `[lte]` - Menor o igual que (fechas/números)
 
 ---
+### Herramientas Recomendadas para testing
 
-## 🧪 Testing
+- **Postman**: Para testing completo de API
+- **Insomnia**: Alternativa ligera a Postman
+- **Thunder Client**: Extensión para VS Code
 
-### Probar con cURL
-```bash
-# Crear contacto
-curl -X POST http://localhost:8000/api/contactos \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -d '{
+## 🧪 Testing con Insomnia
+
+### Configuración Inicial en Insomnia
+
+#### 1. **Configurar Headers Globales**
+```
+Content-Type: application/json
+Accept: application/json
+```
+
+#### 2. **Crear Contacto**
+```
+Método: POST
+URL: http://localhost:8000/api/contactos
+```
+
+**Body (JSON):**
+```json
+{
     "nombre": "María",
     "apellidos": "González López",
     "nro_documento": "87654321",
     "correo": "maria@email.com",
     "telefono": "123456789"
-  }'
+}
 ```
 
-### Herramientas Recomendadas
-- **Postman**: Para testing completo de API
-- **Insomnia**: Alternativa ligera a Postman
-- **Thunder Client**: Extensión para VS Code
+#### 3. **Crear Vehículo**
+```
+Método: POST
+URL: http://localhost:8000/api/vehiculos
+```
+
+**Body (JSON):**
+```json
+{
+    "contacto_id": 1,
+    "placa": "XYZ-789",
+    "marca": "Honda",
+    "modelo": "Civic",
+    "año": 2023
+}
+```
+
+#### 4. **Probar Filtros**
+```
+GET http://localhost:8000/api/contactos?nombre[like]=María&includeVehiculos=true
+GET http://localhost:8000/api/vehiculos?marca[eq]=Honda&clienteNombre[like]=María
+```
+
+
 
 ---
 
