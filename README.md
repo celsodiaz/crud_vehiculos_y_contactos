@@ -371,6 +371,7 @@ GET http://localhost:8000/api/contactos?nombre[like]=María&includeVehiculos=tru
 GET http://localhost:8000/api/vehiculos?marca[eq]=Honda&clienteNombre[like]=María
 ```
 
+![Imagen de Imnsomnia con todos los servicios](./assets/insomnia.jpg)
 
 
 ---
