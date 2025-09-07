@@ -329,6 +329,7 @@ GET /api/vehiculos?clienteDocumento[eq]=12345678
 Content-Type: application/json
 Accept: application/json
 ```
+**Ejemplo para crear contacto o Vehiculo en insomnia**
 
 #### 2. **Crear Contacto**
 ```
