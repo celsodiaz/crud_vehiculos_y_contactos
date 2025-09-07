@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vehiculo;
 use App\Http\Requests\StoreVehiculoRequest;
 use App\Http\Requests\UpdateVehiculoRequest;
+use App\Http\Resources\VehiculoCollection;
 
 class VehiculoController extends Controller
 {
@@ -13,7 +14,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculo = Vehiculo::paginate();
+        return new VehiculoCollection($vehiculo);
     }
 
     /**
