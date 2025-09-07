@@ -55,13 +55,13 @@ composer install
 
 ### 3. Configuración del Entorno
 ```bash
-# Copiar archivo de configuración
+# Ejecutar este comando para crear un archivo .env
 cp .env.example .env
 
 # Generar clave de aplicación
 php artisan key:generate
 ```
-### 4. Variables de Entorno (.env)
+### 4. Variables de Entorno (Copiar en el archivo creado .env)
 ```env
 APP_NAME=Laravel
 APP_ENV=local
