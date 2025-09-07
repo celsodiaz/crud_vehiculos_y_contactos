@@ -2,20 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\VehiculoFilter;
 use App\Models\Vehiculo;
 use App\Http\Requests\StoreVehiculoRequest;
 use App\Http\Requests\UpdateVehiculoRequest;
 use App\Http\Resources\VehiculoCollection;
+use Illuminate\Http\Request;
 
 class VehiculoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $vehiculo = Vehiculo::paginate();
-        return new VehiculoCollection($vehiculo);
+        // Crear instancia del filtro
+        $filter = new VehiculoFilter();
+        $queryItems = $filter->transform($request);
+
+        $vehiculosQuery = Vehiculo::with('contacto');
+
+        // Aplicar filtros si existen
+        if (!empty($queryItems)) {
+            foreach ($queryItems as $queryItem) {
+                [$column, $operator, $value] = $queryItem;
+
+                // Manejar filtros especiales relacionados con contacto
+                if (in_array($column, ['clienteNombre', 'clienteDocumento'])) {
+                    $vehiculosQuery->whereHas('contacto', function ($query) use ($column, $operator, $value) {
+                        $contactoColumn = match($column) {
+                            'clienteNombre' => 'nombre',
+                            'clienteDocumento' => 'nro_documento',
+                            default => $column
+                        };
+                        $query->where($contactoColumn, $operator, $value);
+                    });
+                    continue;
+                }
+
+                // Aplicar filtros normales del vehículo
+                $vehiculosQuery->where($column, $operator, $value);
+            }
+        }
+
+        // Paginación
+        $perPage = $request->query('per_page', 15);
+        $vehiculos = $vehiculosQuery->paginate($perPage);
+
+        return new VehiculoCollection($vehiculos);
     }
 
     /**
