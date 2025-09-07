@@ -62,53 +62,6 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-### 4. Variables de Entorno (.env)
-```env
-# Configuración de la aplicación
-APP_NAME="Sistema Contactos y Vehículos"
-APP_ENV=local
-APP_KEY=base64:CLAVE_GENERADA_AUTOMATICAMENTE
-APP_DEBUG=true
-APP_URL=http://localhost:8000
-
-# Base de datos - MySQL
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=contactos_vehiculos
-DB_USERNAME=tu_usuario
-DB_PASSWORD=tu_password
-
-# Base de datos - SQLite (alternativa)
-# DB_CONNECTION=sqlite
-# DB_DATABASE=/ruta/completa/database/database.sqlite
-
-# Cache y sesiones
-CACHE_DRIVER=file
-QUEUE_CONNECTION=sync
-SESSION_DRIVER=file
-SESSION_LIFETIME=120
-
-# Configuración de correo (opcional)
-MAIL_MAILER=smtp
-MAIL_HOST=mailpit
-MAIL_PORT=1025
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="hello@example.com"
-MAIL_FROM_NAME="${APP_NAME}"
-```
-
-### 5. Configurar Base de Datos
-```bash
-# Crear base de datos (MySQL)
-mysql -u root -p -e "CREATE DATABASE contactos_vehiculos CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-
-# O para SQLite
-touch database/database.sqlite
-```
-
 ---
 
 ## ▶️ Puesta en Marcha
@@ -203,17 +156,6 @@ CREATE TABLE `vehiculos` (
     "nro_documento": "12345678",
     "correo": "juan.perez@email.com",
     "telefono": "987654321"
-}
-```
-
-#### Vehículos de Ejemplo
-```json
-{
-    "contacto_id": 1,
-    "placa": "ABC-123",
-    "marca": "Toyota",
-    "modelo": "Corolla",
-    "año": 2022
 }
 ```
 
@@ -351,28 +293,4 @@ php artisan route:cache
 php artisan view:cache
 composer install --optimize-autoloader --no-dev
 ```
-
----
-
-## 🤝 Contribución
-
-1. Fork el proyecto
-2. Crea tu rama de feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
-## 📝 Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
-
----
-
-## 📞 Soporte
-
-- **Email**: soporte@tu-proyecto.com
-- **Documentación**: [Wiki del proyecto](https://github.com/tu-usuario/contactos-vehiculos/wiki)
-- **Issues**: [GitHub Issues](https://github.com/tu-usuario/contactos-vehiculos/issues)
 
