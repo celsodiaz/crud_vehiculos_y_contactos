@@ -44,8 +44,8 @@ php -m | grep -E "(openssl|pdo|mbstring|tokenizer|xml|ctype|json|bcmath|curl|fil
 
 ### 1. Clonar el Repositorio
 ```bash
-git clone https://github.com/tu-usuario/contactos-vehiculos.git
-cd contactos-vehiculos
+git clone git@github.com:celsodiaz/crud_vehiculos_y_contactos.git
+cd crud_vehiculos_y_contactos
 ```
 
 ### 2. Instalar Dependencias
