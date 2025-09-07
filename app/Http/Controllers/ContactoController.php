@@ -60,8 +60,10 @@ class ContactoController extends Controller
      */
     public function store(StoreContactoRequest $request)
     {
-        //
+        $contacto = Contacto::create($request->validated());
+        return new ContactoResource($contacto);
     }
+
 
     /**
      * Display the specified resource.
@@ -88,7 +90,7 @@ class ContactoController extends Controller
      */
     public function update(UpdateContactoRequest $request, Contacto $contacto)
     {
-        //
+    
     }
 
     /**

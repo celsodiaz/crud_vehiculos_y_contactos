@@ -9,5 +9,5 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::resource('contactos', ContactoController::class);
-Route::resource('vehiculos', VehiculoController::class);
+Route::apiResource('contactos', ContactoController::class);
+Route::apiResource('vehiculos', VehiculoController::class);

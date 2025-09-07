@@ -7,6 +7,7 @@ use App\Models\Vehiculo;
 use App\Http\Requests\StoreVehiculoRequest;
 use App\Http\Requests\UpdateVehiculoRequest;
 use App\Http\Resources\VehiculoCollection;
+use App\Http\Resources\VehiculoResource;
 use Illuminate\Http\Request;
 
 class VehiculoController extends Controller
@@ -65,7 +66,8 @@ class VehiculoController extends Controller
      */
     public function store(StoreVehiculoRequest $request)
     {
-        //
+        $vehiculo = Vehiculo::create($request->validated());
+        return new VehiculoResource($vehiculo);
     }
 
     /**
@@ -89,7 +91,7 @@ class VehiculoController extends Controller
      */
     public function update(UpdateVehiculoRequest $request, Vehiculo $vehiculo)
     {
-        //
+        
     }
 
     /**

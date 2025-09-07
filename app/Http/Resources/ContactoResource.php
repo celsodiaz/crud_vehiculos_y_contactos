@@ -18,10 +18,12 @@ class ContactoResource extends JsonResource
             'id'=> $this->id,
             'nombre'=> $this->nombre,
             'apellidos'=> $this->apellidos,
-            'nroDocumento'=> $this->nro_documento,
+            'nro_documento'=> $this->nro_documento,
             'correo'=> $this->correo,
             'telefono'=> $this->telefono,
-            'Vehiculo' => VehiculoResource::collection($this->whenLoaded('vehiculos'))
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'vehiculos' => $this->when($this->relationLoaded('vehiculos'), $this->vehiculos),
         ];
     }
 }
