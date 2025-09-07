@@ -163,8 +163,6 @@ php artisan route:clear
 # Ver rutas disponibles
 php artisan route:list
 
-# Ejecutar tests (si están configurados)
-php artisan test
 ```
 
 ---
