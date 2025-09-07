@@ -139,6 +139,7 @@ VITE_APP_NAME="${APP_NAME}"
 ```bash
 php artisan migrate
 ```
+Escribir 'yes' para generar la BD
 
 ### 2. Poblar con Datos de Prueba
 ```bash
